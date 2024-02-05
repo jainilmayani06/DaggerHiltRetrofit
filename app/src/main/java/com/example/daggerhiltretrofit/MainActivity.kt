@@ -3,6 +3,7 @@ package com.example.daggerhiltretrofit
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
@@ -23,7 +24,11 @@ class MainActivity : AppCompatActivity() {
         postViewModel.getPost()
 
         postViewModel.postLiveData.observe(this, Observer {response->
-            Log.d("main", response[0].body)
+
+            for(i in response){
+                Log.d("main", response[0].body)
+                Toast.makeText(this, i.body, Toast.LENGTH_SHORT).show()
+            }
         })
 
     }
