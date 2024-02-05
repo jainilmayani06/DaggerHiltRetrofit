@@ -1,21 +1,19 @@
 package com.example.daggerhiltretrofit.viewmodel
 
 import android.util.Log
-import androidx.hilt.lifecycle.ViewModelInject
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.asLiveData
 import androidx.lifecycle.viewModelScope
-import androidx.lifecycle.viewmodel.ViewModelFactoryDsl
 import com.example.daggerhiltretrofit.models.Post
 import com.example.daggerhiltretrofit.repository.PostRepository
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 
-@Suppress("DEPRECATION")
-class PostViewModel @ViewModelInject constructor(private  val postRepository: PostRepository) : ViewModel() {
+@HiltViewModel
+class PostViewModel @Inject constructor(private  val postRepository: PostRepository) : ViewModel() {
 
     val postLiveData : MutableLiveData<List<Post>> = MutableLiveData()
 
